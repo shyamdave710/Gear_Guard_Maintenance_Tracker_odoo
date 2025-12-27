@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_maintenance_request_search" model="ir.ui.view">
+        <field name="name">gearguard.maintenance.request.search</field>
+        <field name="model">gearguard.maintenance.request</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+            </search>
+        </field>
+    </record>
+</odoo>

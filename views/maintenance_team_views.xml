@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ===================== TEAM FORM ===================== -->
+
+    <record id="view_maintenance_team_form" model="ir.ui.view">
+        <field name="name">gearguard.maintenance.team.form</field>
+        <field name="model">gearguard.maintenance.team</field>
+        <field name="arch" type="xml">
+            <form string="Maintenance Team">
+                <sheet>
+
+                    <div class="oe_button_box" name="button_box">
+
+                        <button
+                            type="object"
+                            name="action_view_equipment"
+                            class="oe_stat_button"
+                            icon="fa-cogs">
+                            <field name="equipment_count" widget="statinfo" string="Equipment"/>
+                        </button>
+
+                        <button
+                            type="object"
+                            name="action_view_open_requests"
+                            class="oe_stat_button"
+                            icon="fa-wrench">
+                            <field name="open_request_count" widget="statinfo" string="Open Requests"/>
+                        </button>
+
+                        <button
+                            type="object"
+                            name="action_view_all_requests"
+                            class="oe_stat_button"
+                            icon="fa-tasks">
+                            <field name="request_count" widget="statinfo" string="Total Requests"/>
+                        </button>
+
+                    </div>
+
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+
+                    <group>
+                        <group>
+                            <field name="team_leader_id" widget="many2one_avatar_user"/>
+                            <field name="sequence"/>
+                        </group>
+                        <group>
+                            <field name="color"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="Team Members">
+                            <field name="member_ids" widget="many2many_tags_avatar"/>
+                        </page>
+                    </notebook>
+
+                </sheet>
+
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+</odoo>

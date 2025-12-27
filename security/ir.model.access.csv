@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_request,maintenance request,model_gearguard_maintenance_request,,1,1,1,1
+access_equipment,maintenance equipment,model_gearguard_maintenance_equipment,,1,1,1,1
+access_team,maintenance team,model_gearguard_maintenance_team,,1,1,1,1

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ===================== EQUIPMENT FORM ===================== -->
+
+    <record id="view_maintenance_equipment_form" model="ir.ui.view">
+        <field name="name">gearguard.maintenance.equipment.form</field>
+        <field name="model">gearguard.maintenance.equipment</field>
+        <field name="arch" type="xml">
+            <form string="Equipment">
+                <sheet>
+
+                    <div class="oe_button_box" name="button_box">
+                        <button
+                            type="object"
+                            name="action_view_requests"
+                            class="oe_stat_button"
+                            icon="fa-wrench">
+                            <field name="request_count" widget="statinfo" string="Requests"/>
+                        </button>
+                    </div>
+
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+
+                    <group>
+                        <group>
+                            <field name="serial_number"/>
+                            <field name="department"/>
+                            <field name="maintenance_team_id"/>
+                        </group>
+                        <group>
+                            <field name="active"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="Description">
+                            <field name="description"/>
+                        </page>
+                    </notebook>
+
+                </sheet>
+
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+
+            </form>
+        </field>
+    </record>
+
+</odoo>
