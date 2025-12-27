@@ -1,0 +1,121 @@
+/* GearGuard Custom Styles */
+
+/* Kanban Card Enhancements */
+.o_kanban_view .oe_kanban_color_0 {
+    border-left: 4px solid #6c757d;
+}
+
+.o_kanban_view .oe_kanban_color_1 {
+    border-left: 4px solid #0d6efd;
+}
+
+.o_kanban_view .oe_kanban_color_2 {
+    border-left: 4px solid #198754;
+}
+
+.o_kanban_view .oe_kanban_color_3 {
+    border-left: 4px solid #ffc107;
+}
+
+.o_kanban_view .oe_kanban_color_4 {
+    border-left: 4px solid #dc3545;
+}
+
+/* Overdue Indicator */
+.gearguard_overdue {
+    background-color: #fee;
+    border-left: 4px solid #dc3545 !important;
+}
+
+/* Priority Badges */
+.o_priority_star {
+    cursor: pointer;
+    color: #ffc107;
+}
+
+.o_priority_star.fa-star-o {
+    color: #d1d5db;
+}
+
+/* Equipment Card Styling */
+.o_kanban_record .o_kanban_record_title {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+/* Team Member Avatars */
+.o_field_many2many_tags_avatar .o_tag {
+    margin: 2px;
+}
+
+/* Calendar View Enhancements */
+.o_calendar_view .fc-event {
+    border-radius: 4px;
+    padding: 2px 4px;
+}
+
+/* Stat Button Enhancements */
+.oe_stat_button .o_stat_info {
+    text-align: center;
+}
+
+.oe_stat_button .o_stat_value {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1;
+    color: #0d6efd;
+}
+
+/* Form View Improvements */
+.o_form_view .o_form_sheet {
+    max-width: 1140px;
+}
+
+/* Responsive Kanban */
+@media (max-width: 768px) {
+    .o_kanban_view .o_kanban_record {
+        width: 100% !important;
+        margin: 8px 0;
+    }
+}
+
+/* Status Badges */
+.badge-corrective {
+    background-color: #dc3545;
+    color: white;
+}
+
+.badge-preventive {
+    background-color: #0dcaf0;
+    color: #000;
+}
+
+/* Warranty Status Colors */
+.o_field_badge[name="warranty_status"] .badge {
+    min-width: 100px;
+}
+
+/* Smart Button Hover Effects */
+.oe_stat_button:hover {
+    background-color: #f8f9fa;
+    transition: background-color 0.2s;
+}
+
+/* Chatter Enhancements */
+.o_chatter {
+    border-top: 1px solid #dee2e6;
+    padding-top: 16px;
+}
+
+/* Loading State */
+.o_loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Success States */
+.o_field_widget.o_field_boolean_toggle .custom-control-input:checked ~ .custom-control-label::before {
+    background-color: #198754;
+    border-color: #198754;
+}
