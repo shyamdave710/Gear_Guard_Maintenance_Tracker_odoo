@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- Equipment Action -->
+    <record id="action_maintenance_equipment" model="ir.actions.act_window">
+        <field name="name">Equipment</field>
+        <field name="res_model">gearguard.maintenance.equipment</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Maintenance Team Action -->
+    <record id="action_maintenance_team" model="ir.actions.act_window">
+        <field name="name">Maintenance Teams</field>
+        <field name="res_model">gearguard.maintenance.team</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Maintenance Request Action -->
+    <record id="action_maintenance_request" model="ir.actions.act_window">
+        <field name="name">Maintenance Requests</field>
+        <field name="res_model">gearguard.maintenance.request</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field name="search_view_id" ref="view_maintenance_request_search"/>
+    </record>
+
+</odoo>
