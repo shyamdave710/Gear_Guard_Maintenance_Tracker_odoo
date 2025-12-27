@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- Demo Team -->
+    <record id="demo_team_it" model="gearguard.maintenance.team">
+        <field name="name">IT Support</field>
+    </record>
+
+    <!-- Demo Equipment -->
+    <record id="demo_equipment_laptop" model="gearguard.maintenance.equipment">
+        <field name="name">Office Laptop</field>
+        <field name="maintenance_team_id" ref="demo_team_it"/>
+    </record>
+
+    <!-- Demo Request -->
+    <record id="demo_request_1" model="gearguard.maintenance.request">
+        <field name="name">Laptop Screen Flicker</field>
+        <field name="equipment_id" ref="demo_equipment_laptop"/>
+        <field name="maintenance_team_id" ref="demo_team_it"/>
+        <field name="priority">2</field>
+    </record>
+
+</odoo>

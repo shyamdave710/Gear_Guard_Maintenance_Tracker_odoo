@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <!-- Categories -->
+        <record id="module_category_gearguard" model="ir.module.category">
+            <field name="name">GearGuard Maintenance</field>
+            <field name="description">Manage maintenance and equipment</field>
+            <field name="sequence">20</field>
+        </record>
+
+        <!-- User: Can create requests and view own requests -->
+        <record id="group_gearguard_user" model="res.groups">
+            <field name="name">User</field>
+            <field name="category_id" ref="module_category_gearguard"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+
+        <!-- Technician: Can manage requests assigned to them -->
+        <record id="group_gearguard_technician" model="res.groups">
+            <field name="name">Technician</field>
+            <field name="category_id" ref="module_category_gearguard"/>
+            <field name="implied_ids" eval="[(4, ref('group_gearguard_user'))]"/>
+        </record>
+
+        <!-- Manager: Full access to all features -->
+        <record id="group_gearguard_manager" model="res.groups">
+            <field name="name">Manager</field>
+            <field name="category_id" ref="module_category_gearguard"/>
+            <field name="implied_ids" eval="[(4, ref('group_gearguard_technician'))]"/>
+        </record>
+
+        <!-- Record Rules -->
+
+        <!-- Equipment Rules -->
+        <record id="equipment_rule_manager" model="ir.rule">
+            <field name="name">Equipment: Manager sees all</field>
+            <field name="model_id" ref="model_gearguard_equipment"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('group_gearguard_manager'))]"/>
+        </record>
+
+        <record id="equipment_rule_user" model="ir.rule">
+            <field name="name">Equipment: User sees all (read only)</field>
+            <field name="model_id" ref="model_gearguard_equipment"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('group_gearguard_user'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <!-- Maintenance Request Rules -->
+        <record id="request_rule_manager" model="ir.rule">
+            <field name="name">Request: Manager sees all</field>
+            <field name="model_id" ref="model_gearguard_maintenance_request"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('group_gearguard_manager'))]"/>
+        </record>
+
+        <record id="request_rule_technician" model="ir.rule">
+            <field name="name">Request: Technician sees team requests</field>
+            <field name="model_id" ref="model_gearguard_maintenance_request"/>
+            <field name="domain_force">['|', ('maintenance_team_id.member_ids', 'in', [user.id]), ('user_id', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('group_gearguard_technician'))]"/>
+        </record>
+
+        <record id="request_rule_user" model="ir.rule">
+            <field name="name">Request: User sees own requests</field>
+            <field name="model_id" ref="model_gearguard_maintenance_request"/>
+            <field name="domain_force">[('user_id', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('group_gearguard_user'))]"/>
+        </record>
+
+        <!-- Team Rules -->
+        <record id="team_rule_all" model="ir.rule">
+            <field name="name">Team: All users see all teams</field>
+            <field name="model_id" ref="model_gearguard_maintenance_team"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('group_gearguard_user'))]"/>
+        </record>
+
+        <!-- Equipment Category Rules -->
+        <record id="category_rule_all" model="ir.rule">
+            <field name="name">Category: All users see all categories</field>
+            <field name="model_id" ref="model_gearguard_equipment_category"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('group_gearguard_user'))]"/>
+        </record>
+
+        <!-- Stage Rules -->
+        <record id="stage_rule_all" model="ir.rule">
+            <field name="name">Stage: All users see all stages</field>
+            <field name="model_id" ref="model_gearguard_maintenance_stage"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('group_gearguard_user'))]"/>
+        </record>
+
+    </data>
+</odoo>
